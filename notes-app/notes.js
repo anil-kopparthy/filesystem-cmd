@@ -5,8 +5,9 @@ const chalk = require('chalk');
 const addNote = (title, body) => {
   const notes = loadNotes();
   const duplicateNote = notes.find(note => note.title === title);
+
   duplicateNote && duplicateNote.length !== 0
-    ? console.log('Note title taken')
+    ? console.log(chalk.red.inverse('Note title taken'))
     : (notes.push({
         title: title,
         body: body
@@ -61,4 +62,4 @@ const loadNotes = () => {
   }
 };
 
-module.exports = { getNotes, addNote, removeNote, listNotes, readNote };
+module.exports = { addNote, removeNote, listNotes, readNote };
